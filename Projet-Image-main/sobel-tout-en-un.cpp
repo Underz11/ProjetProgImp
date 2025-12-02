@@ -6,10 +6,10 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
-#include "image.hpp"
 using namespace std;
 
-
+/** Structure de donnee pour representer une image en teintes de gris **/
+typedef vector<vector<double> > ImageGris;
 
 
 
@@ -84,12 +84,6 @@ void ecrirePGM(ImageGris img, string cible) {
 }
 
 
-
-
-
-
-
-
 /** Teste si deux images en teintes de gris sont égales modulo imprécision numérique
  * En cas de différence un message est affiché
  * @param a une image en teintes de gris
@@ -128,8 +122,8 @@ ImageGris intensiteH(ImageGris img) {
     for (int a = 0 ; a < nligne.size() ; a++) nligne[a] = 0;
     auto nimg = ImageGris ( img.size() );
     for ( int b = 0; b < nimg.size() ; b++) nimg[b] = nligne;
-    for( int i = 0 ; i < img.size() ; i++ ) for ( int j = 0 ; j < img[i].size() ; j++)
-        if ((i != 0) && (j!=0)) nimg[i][j] = img[i-1][j-1] + 2*img[i][j-1] +
+    for( int i = 1 ; i < img.size()-1 ; i++ ) for ( int j = 0 ; j < img[i].size()-1 ; j++)
+        if (j!=0) nimg[i][j] = img[i-1][j-1] + 2*img[i][j-1] +
             img[i+1][j-1]- img[i-1][j+1] - 2*img[i][j+1] - img[i+1][j+1];
     return nimg;
 }
@@ -142,8 +136,13 @@ ImageGris intensiteH(ImageGris img) {
  * @return une image en teintes de gris de l'intensite verticale de img
  **/
 ImageGris intensiteV(ImageGris img) {
-    // Remplacez cette ligne et la suivante par le code adéquat
-    throw runtime_error("Fonction intensiteV non implantée ligne 104");
+    auto nligne = vector<double> ( img[0].size() );
+    for (int a = 0 ; a < nligne.size() ; a++) nligne[a] = 0;
+    auto nimg = ImageGris ( img.size() );
+    for ( int b = 0; b < nimg.size() ; b++) nimg[b] = nligne;
+    for( int i = 1 ; i < img.size()-1 ; i++ ) for ( int j = 0 ; j < img[i].size()-1 ; j++)
+        if (j!=0) nimg[i][j] = img[i-1][j-1] + 2*img[i-1][j] + img[i-1][j+1] - img[i+1][j-1] - 2*img[i+1][j] - img[i+1][j+1];
+    return nimg;
 }
 
 
@@ -154,8 +153,17 @@ ImageGris intensiteV(ImageGris img) {
  * @return une image en teintes de gris de l'intensite de img
  **/
 ImageGris intensite(ImageGris img) {
-    // Remplacez cette ligne et la suivante par le code adéquat
-    throw runtime_error("Fonction intensite non implantée ligne 116");
+    auto nligne = vector<double> ( img[0].size() );
+    for (int a = 0 ; a < nligne.size() ; a++) nligne[a] = 0;
+    auto nimg = ImageGris ( img.size() );
+    for ( int b = 0; b < nimg.size() ; b++) nimg[b] = nligne;
+    for( int i = 1 ; i < img.size()-1 ; i++ ) for ( int j = 0 ; j < img[i].size()-1 ; j++)
+        if (j!=0){
+            double h = img[i-1][j-1] + 2*img[i][j-1] + img[i+1][j-1]- img[i-1][j+1] - 2*img[i][j+1] - img[i+1][j+1];
+            double v = img[i-1][j-1] + 2*img[i-1][j] + img[i-1][j+1] - img[i+1][j-1] - 2*img[i+1][j] - img[i+1][j+1];
+            nimg[i][j] = sqrt( h*h + v*v );
+        }
+    return nimg;
 }
 
 
