@@ -26,8 +26,8 @@ affirmez.*
 
 ## Auteurs
 
-- Nom, prénom, courriel, groupe
-- Nom, prénom, courriel, groupe
+- MERGHEM, Elias, elias.merghem@universite-paris-saclay.fr, LDD1 IM2
+- FABRE, Julie, julie.fabre@universite-paris-saclay.fr, LDD1 IM2
 
 +++
 
