@@ -26,8 +26,8 @@ affirmez.*
 
 ## Auteurs
 
-- MERGHEM, Elias, elias.merghem@universite-paris-saclay.fr, LDD1 IM2
-- FABRE, Julie, julie.fabre@universite-paris-saclay.fr, LDD1 IM2
+- Nom, prénom, courriel, groupe
+- Nom, prénom, courriel, groupe
 
 +++
 
@@ -45,7 +45,7 @@ devra préciser son auteur et votre degré de confiance dans
 l'implantation et les éléments factuels motivant cette confiance:
 présence de tests, bogues et limitations connus, etc.*
 
-- Partie 1: Non traitée
+- Partie 1: Non 
 - Partie 2: Non traitée
 - Partie 3: Non traitée
 - Partie 4: Non traitée
@@ -190,17 +190,75 @@ im.resize((100, 68))                         # affiche l'image avec une taille d
 
 ```
 
+```{code-cell} ipython3
+
+```
+
 ### Partie 5
 
 *A compléter*
 
-+++
+```{code-cell} ipython3
+%%bash --login
+make ppm-test
+```
+
+```{code-cell} ipython3
+%%bash --login
+./ppm-test
+```
+
+```{code-cell} ipython3
+# affichage de l'image crée
+from open_ppm import open_ppm                # importe la commande open_ppm fournie
+im = open_ppm("ppm/House.256.ppm")       # charge l'image
+im.resize((100, 68))                         
+```
+
+```{code-cell} ipython3
+%%bash --login
+make gris-couleurs-test
+```
+
+```{code-cell} ipython3
+%%bash --login
+./gris-couleurs-test
+```
+
+```{code-cell} ipython3
+# affichage de l'image crée
+from open_ppm import open_ppm                # importe la commande open_ppm fournie
+im = open_ppm("gris-couleurs/Billes.256.pgm")       # charge l'image
+im.resize((100, 68)) 
+```
 
 ### Partie 6
 
 *A compléter*
 
-+++
+```{code-cell} ipython3
+%%bash --login
+make superpixel-test
+```
+
+```{code-cell} ipython3
+%%bash --login
+./superpixel-test
+```
+
+```{code-cell} ipython3
+# affichage de l'image crée
+from open_ppm import open_ppm                # importe la commande open_ppm fournie
+im = open_ppm("superpixel/Willis.512.ppm")       # charge l'image
+im.resize((255, 255))
+```
+
+```{code-cell} ipython3
+# affichage de l'image crée
+from open_ppm import open_ppm                # importe la commande open_ppm fournie
+im = open_ppm("superpixel/Billes.256.ppm")       # charge l'image
+im.resize((255, 255))
+```
 
 ## Organisation du travail
 

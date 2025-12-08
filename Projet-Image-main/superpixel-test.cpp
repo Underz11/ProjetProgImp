@@ -95,9 +95,12 @@ int main(){
     cerr << "Tests de la fonction superPixel" << endl;
     superPixelTest();
 
+    ecrirePPM(superPixel(lirePPM("images/House.256.ppm"), 1, 30, 25),  "superpixel/House.256.ppm");
+    ecrirePPM(superPixel(lirePPM("images/Embryos.512.ppm"), 2, 40, 20),  "superpixel/Embryos.512.ppm");
+    ecrirePPM(superPixelAvecBleu(superPixel(lirePPM("images/Billes.256.ppm"  ), 1, 60, 15)),  "superpixel/Billes.256.ppm");
+    
 
-    // Remplacez cette ligne et la suivante par le code adéquat
-    throw runtime_error("code non implanté ligne 99");
+   
 
 }
 

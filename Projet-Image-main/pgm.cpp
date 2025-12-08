@@ -50,7 +50,7 @@ void ecrirePGM(ImageGris img, string cible) {
     flux << ' ' << img[0].size();
     flux << ' ' << "255";
     
-    for ( auto ligne : img ) for (auto car : ligne ) flux << ' ' << car;
+    for ( auto ligne : img ) for (auto car : ligne ) flux << ' ' << ((int)car);
 
     flux.close();
 }

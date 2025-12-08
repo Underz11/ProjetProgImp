@@ -24,10 +24,11 @@ void couleurAuGrisTest() {
     ecrirePGM(CouleurAuGris(lirePPM("images/Billes.256.ppm" )), "gris-couleurs/Billes.256.pgm");
     ecrirePGM(CouleurAuGris(lirePPM("images/Embryos.512.ppm")), "gris-couleurs/Embryos.512.pgm");
     ecrirePGM(CouleurAuGris(lirePPM("images/House.256.ppm"  )), "gris-couleurs/House.256.pgm");
+    ecrirePGM(CouleurAuGris(lirePPM("images/Picture1.ppm"  )), "gris-couleurs/Picture1.pgm");
 }
 
-void grisACouleurTest() {
-    CHECK( ImageGrisEgal(CouleurAuGris(GrisACouleur(imgGrisTest)),
+ void grisACouleurTest() {
+   CHECK( ImageGrisEgal(CouleurAuGris(GrisACouleur(imgGrisTest)),
              imgGrisTest,
              0.001) );
 }
@@ -35,5 +36,8 @@ void grisACouleurTest() {
 int main(){
     cerr << "Tests de la fonction couleurAuGris" << endl;
     couleurAuGrisTest();
+    cerr << "Test de la fonction grisACouleur" << endl;
+    grisACouleurTest();
+    
 }
 
